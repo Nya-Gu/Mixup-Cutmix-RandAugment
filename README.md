@@ -3,7 +3,7 @@
 ## **1-1. Mixup, Cutmix, RandAugment을 구현하게 된  동기**
 그동안 모델을 학습시킬 때 Horizontal Flip과 ColorJitter 증강만 사용했습니다. 두 증강을 사용한 데에는 특별한 이유가 없었습니다. 그저 제가 아는 선에서 유의미한 성능 향상을 보인 증강을 가져다 썼을 뿐이었습니다.  
 이제는 좀 더 근거를 가지고 데이터를 증강하고 싶었습니다. 그래서 증강 기법에 대한 논문 몇 가지를 읽으며 그에 대해 알아가는 시간을 가지기로 했습니다.  
-Mixup, Cutmix, RandAugment을 적용한 모델 학습은 Image Classification 노트북에서 진행했습니다.  
+Mixup, Cutmix, RandAugment을 적용한 모델 학습은 Image Classification repository의 노트북에서 진행했습니다.  
 
 ## **1-2. 구현에 참고한 논문**
 **[1] Mixup: Beyond Empirical Risk Minimization**
