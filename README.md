@@ -95,3 +95,23 @@ Pytorch 사람들이 RandAugment를 시험한 결과, AutoAugment의 magnitude=1
 
 <img width="1296" height="318" alt="image" src="https://github.com/user-attachments/assets/f747c693-b0ed-4fa3-b972-92c536dd5a79" />
 
+## 6. 학습 결과
+
+RA(N,M)에서 N은 적용한 증강 개수(num_ops), M은 증강 강도(magnitude) 입니다. (RA: RandAugment)  
+증강별 성능 향상 정도를 공정하게 비교하려면 다회 실험 후 평균을 내야 하지만 시간이 없는 관계로 2회 실험 중 최고 성능을 기재했습니다.  
+사용한 랜덤 시드: 13, 42  
+
+| No. | 실험 모델 | 데이터 증강 | Validation Accuracy | 학습 시간 (L4 GPU) |
+|-----|-----------|:-----------:|:-------------------:|--------------------|
+| 1 | EfficientNetV2-B0 | X | 87.95% | 22분 (0.37분/epoch)|
+| 2 | EfficientNetV2-B0 | Mixup(α=0.4) | +1.25% | 24분 (0.40분/epoch)|
+| 3 | EfficientNetV2-B0 | Cutmix(α=1) | +1.20% | 24분 (0.40분/epoch)|
+| 4 | EfficientNetV2-B0 | RA(N=2, M=3) | +0.64% | 24분 (0.40분/epoch)|
+| 5 | EfficientNetV2-B0 | RA(N=2, M=5) | +0.74% | 24분 (0.40분/epoch)|
+| 6 | EfficientNetV2-B0 | RA(N=2, M=7) | +1.17% | 24분 (0.40분/epoch)|
+| 7 | EfficientNetV2-B0 | RA(N=2, M=9) | **+1.30%** | 24분 (0.40분/epoch)|
+| 8 | EfficientNetV2-B0 | RA(N=2, M=11) | +1.15% | 24분 (0.40분/epoch)|
+| 9 | EfficientNetV2-B0 | RA(N=2, M=13) | +0.87% | 24분 (0.40분/epoch)|
+
+RandAugment의 증강 강도가 M=3 에서 M=13로 증가할 때 모델 성능이 가우시안 분포처럼 올라갔다가 내려가는 것이 보입니다.  
+큰 고민 없이 M을 서서히 늘리거나 줄이는 것만으로 성능의 고점을 볼 수 있다는 게 RandAugment의 이점인 것 같습니다.  
